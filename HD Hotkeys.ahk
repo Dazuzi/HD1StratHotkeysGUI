@@ -1,13 +1,13 @@
 /*
 Helldivers Stratagem AutoHotkey v2 script with GUI
-Version 1.0
+Version 1.1
 
 https://github.com/Dazuzi/HD1StratHotkeysGUI
 */
 
 ;@Ahk2Exe-SetName Helldivers Stratagem Hotkeys
 ;@Ahk2Exe-SetDescription Helldivers Stratagem AutoHotkey v2 script with GUI
-;@Ahk2Exe-SetFileVersion 1.0.0.0
+;@Ahk2Exe-SetFileVersion 1.1.0.0
 
 #Requires Autohotkey v2
 #SingleInstance Force
@@ -189,7 +189,7 @@ ConstructGUI() {
 
 	Tab.UseTab(3)
 	HotkeyGUI.Add("Text", "Section h18 w400", "Helldivers Stratagem AutoHotkey v2 script with GUI").SetFont("bold s10")
-	HotkeyGUI.Add("Text", "xs", "Version 1.0")
+	HotkeyGUI.Add("Text", "xs", "Version 1.1")
 	HotkeyGUI.Add("Link", "xs y+20", '<a href="https://github.com/Dazuzi/HD1StratHotkeysGUI">https://github.com/Dazuzi/HD1StratHotkeysGUI</a>')
 
 	Tab.UseTab()
@@ -283,7 +283,7 @@ ConstructGUI() {
 				MenuIDs[2].SetFont("")
 				If AutoThrowTooltips.Value {
 					ControlGetPos &x, &y,, &h, MenuIDs[2]
-					If (Index > 1)
+					If Index > 1
 						ToolTip(StratagemArray[Index].Name " cannot be thrown, autothrow disabled.", x, y - 25)
 					Else
 						ToolTip("Autothrow disabled.", x, y - 25)
@@ -357,9 +357,14 @@ ConstructGUI() {
 	AddProfileClick(*) {
 		NewProfile := Object
 		NewProfile.Value := "MyNewProfile"
+		NewProfileNumber := 0
+		While ProfileExists(NewProfile.Value) > 0 {
+			NewProfileNumber++
+			NewProfile.Value := "MyNewProfile" NewProfileNumber
+		}
 		TryAgain:
 		NewProfile := InputBox("Enter an alphanumeric name for a new profile:", "Helldivers Stratagem Hotkeys", "h100", NewProfile.Value)
-		If (NewProfile.Result = "Cancel")
+		If NewProfile.Result = "Cancel"
 			Return
 		Else If StrLen(NewProfile.Value) > 64 {
 			If MsgBox("The profile name can be a maximum of 64 characters long, please try again.", "Helldivers Stratagem Hotkeys", "RC IconX 8192") = "Retry"
@@ -461,80 +466,80 @@ ConstructGUI() {
 	}
 }
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[1] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[1] > 1
 NumLock::PlayKeys(1)
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[2] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[2] > 1
 NumpadDiv::PlayKeys(2)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[3] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[3] > 1
 NumpadMult::PlayKeys(3)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[4] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[4] > 1
 NumpadSub::PlayKeys(4)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[5] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[5] > 1
 Numpad7::
 NumpadHome::PlayKeys(5)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[6] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[6] > 1
 Numpad8::
 NumpadUp::PlayKeys(6)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[7] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[7] > 1
 Numpad9::
 NumpadPgUp::PlayKeys(7)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[8] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[8] > 1
 NumpadAdd::PlayKeys(8)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[9] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[9] > 1
 Numpad4::
 NumpadLeft::PlayKeys(9)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[10] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[10] > 1
 Numpad5::
 NumpadClear::PlayKeys(10)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[11] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[11] > 1
 Numpad6::
 NumpadRight::PlayKeys(11)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[12] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[12] > 1
 Numpad1::
 NumpadEnd::PlayKeys(12)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[13] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[13] > 1
 Numpad2::
 NumpadDown::PlayKeys(13)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[14] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[14] > 1
 Numpad3::
 NumpadPgDn::PlayKeys(14)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[15] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[15] > 1
 NumpadEnter::PlayKeys(15)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[16] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[16] > 1
 Numpad0::
 NumpadIns::PlayKeys(16)
 #HotIf
 
-#HotIf (WinActive("Helldivers")) && (HotkeyArray[17] > 1)
+#HotIf WinActive("Helldivers") && HotkeyArray[17] > 1
 NumpadDot::
 NumpadDel::PlayKeys(17)
 #HotIf
