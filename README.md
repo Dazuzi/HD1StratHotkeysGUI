@@ -1,6 +1,6 @@
 # Helldivers Stratagem AutoHotkey v2 script with GUI
 
-![HD Hotkeys](https://github.com/user-attachments/assets/2acc7f25-e916-4789-baf6-7411e1399729)
+![HD Hotkeys](https://github.com/user-attachments/assets/04eadea9-25a1-4110-beb6-0fa19acf53fe)
 
 ## How to use
 
@@ -12,3 +12,4 @@
 
 * The script defaults to WASD and Control keys for inputting the stratagems.
 * If the macro fails to input stratagems properly, increase the minimum delay.
+
